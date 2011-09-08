@@ -1,0 +1,47 @@
+What is this?
+
+This is a simple application to repair the internal metadata for 
+Tiff files provided by the Directorate of Geospatial Information, 
+South Africa. Some of the data provided by them is stored 
+in Tiff with 12bit JPEG compression but incorrectly reports 
+that is is using 16bit compression in its metadata.
+
+Running this program on such a file will correct that error.
+
+
+Who wrote this?
+
+
+This Program was kindly created by Frank Warmerdam. Here are the 
+original notes he provided along with it:
+
+"I poked around a bit but libtiff is a pretty fragile environment to
+modify with hacks for particular bad data products.
+
+However, I have come up with a small C program using libtiff that can
+fix up one of your TIFF files labelled as 16bit when it is really 12bit.
+I have attached it.  No exactly rocket science!
+
+It should likely be used with a fairly recent version of libtiff like:
+
+ http://download.osgeo.org/libtiff/tiff-4.0.0beta7.zip
+
+Older system libtiff are likely to lack some important fixes related
+to updating TIFF files in place - generally not a strength of libtiff.
+
+The program will fix the file in place and then it should work with any
+recent GDAL based application using the built-in libtiff/libjpeg libraries
+as this will turn on 12bit support by default.
+
+A command something like the following should be enough to build it.
+
+ gcc -Ibld/include safix.c -o safix -Lbld/lib -ltiff
+
+then just run it, one file at a time, on problem files to fix them.
+
+The "fix" may very well break them for some other applications who
+expect the problem behavior so be cautious about doing this to the original."
+
+
+
+Tim Sutton, September 2011
