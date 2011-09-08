@@ -65,9 +65,29 @@ all commands that follow will assume that - you need to amend them
 as appropriate for your system.
 
 Now also check out the safix code (you may already have it if you 
-are reading this).
+are reading this). If you are a git user:
 
+git clone git://github.com/timlinux/safix.git
 
+Or just grab the latest build:
+
+https://github.com/timlinux/safix/zipball/master
+
+Compile libjpeg:
+----------------
+
+In the jpeg extracted dir do:
+
+cp jconfig.vc jconfig.h
+nmake /f makefile.vc
+
+Compile libtiff:
+----------------
+In the libtiff directory do:
+
+cd tiff-4.0.0beta7
+
+Edit nmake.opt and set the following options (to enable jpeg and zlip support):
 
 
 
@@ -88,5 +108,31 @@ ZLIBDIR 	= C:/dev/cpp/zlib125-dll
 ZLIB_INCLUDE	= -I$(ZLIBDIR)/include
 ZLIB_LIB 	= $(ZLIBDIR)/lib/zdll.lib
 
+
+nmake /f makefile.vc
+
+
+Compile SAFIX:
+-------------------
+
+Make a build directory in the source tree
+Run cmake-gui
+Set the source dir to C:\dev\cpp\safix
+Set the build dir to C:\dev\cpp\safix\build
+Press configure
+
+Toggle advanced view on
+Set the following options:
+
+TIFF_INCLUDE_DIR C:\dev\cpp\tiff-4.0.0beta7\libtiff
+TIFF_LIBRARY C:\dev\cpp\tiff-4.0.0beta7\libtiff
+
+
+Then configure, generate and open the created build/<project name>.sln file 
+in MSVC Express.
+
+Now compile. You should have a safix.exe executable when done.
+
+===================================================================
 
 Tim Sutton, September 2011
