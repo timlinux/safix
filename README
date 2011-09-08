@@ -109,7 +109,19 @@ ZLIB_INCLUDE	= -I$(ZLIBDIR)/include
 ZLIB_LIB 	= $(ZLIBDIR)/lib/zdll.lib
 
 
+Now build:
+
 nmake /f makefile.vc
+
+To clean your build do:
+
+nmake /f makefile.vc clean 
+
+
+You can get further hints and tips on building on msvc here: 
+
+http://libtiff.maptools.org/build.html#PC
+
 
 
 Compile SAFIX:
