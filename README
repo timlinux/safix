@@ -47,6 +47,37 @@ expect the problem behavior so be cautious about doing this to the original."
 Compilation - Linux:
 ================================================
 
+Under linux you need to have a working development environment
+
+apt-get build-essential libjpeg62-dev cmake-curses-gui
+
+Download Libtiff:
+
+http://download.osgeo.org/libtiff/tiff-4.0.0beta7.zip
+
+Then build it using:
+
+./configure --prefix=/home/timlinux/apps/ --with-jpeg12-lib=/usr/lib/libjpeg.a
+make install
+
+Download the source code and make a build dir:
+
+
+git clone git://github.com/timlinux/safix.git
+cd safix
+mkdir build
+cd build
+export LIB_DIR=/home/timlinux/apps
+ccmake ..
+
+Check everything is ok in the ui and then configure and generate
+
+Then run 
+
+make
+
+Afterwards the safix binary should be in the build directory.
+
 
 Compilation - Windows:
 ================================================
